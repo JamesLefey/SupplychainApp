@@ -1,15 +1,24 @@
-const Producer = require('./Producer');
 const Consumer = require('./Consumer');
+const Items = require('./Items');
+const Producer = require('./Producer');
 
-Producer.hasMany(Consumer, {
-    // foreignkey: 'author',
+
+Consumer.hasOne(Producer, {
+    foreignkey: 'consumer_id',
     onDelete: 'CASCADE'
 });
 
-Consumer.belongsTo(Producer, {
-    // foreignKey: "author",
+Producer.belongsTo(Consumer, {
+    foreignkey: 'consumer_id',
 });
 
+Consumer.hasMany(Items, {
+    foreignkey: 'consumer_id',
+    onDelete: 'CASCADE'
+});
 
+Items.belongsTo(Consumer, {
+    foreignKey: 'consumer_id',
+});
 
-module.exports = { Producer, Consumer }
+module.exports = { Consumer, Items, Producer };

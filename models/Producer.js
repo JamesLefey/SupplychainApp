@@ -21,17 +21,12 @@ class Producer extends Model {
         allowNull: false,
       },
 
-      item_description: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      }, 
-
-      producer_goods: {
+    producer_goods: {
         type: DataTypes.STRING,
         allowNull: false,
       },
 
-      balance: {
+      producer_balance: {
         type: DataTypes.INTEGER,
       allowNull: false,
       defauleValue: 10,
@@ -40,20 +35,22 @@ class Producer extends Model {
       }
     },
 
-    item_price: {
-        type: DataTypes.DECIMAL(10, 2),
-        allowNull: false,
-        validate: {
-          isNumeric: true,
-        }
+    consumer_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'consumer',
+        key: 'id',
       },
+    },
 
-},
-{  sequelize,
+  },
+  {  
+  sequelize,
       timestamps: false,
       freezeTableName: true,
       underscored: true,
-      modelName: 'Producer',}
+      modelName: 'producer',
+    }
      
 )
 
