@@ -1,5 +1,5 @@
 const { Model, DataTypes } = require('sequelize');
-const bcrypt = require('bcrypt');
+
 const sequelize = require('../config/connection');
 
 class Producer extends Model {
@@ -11,7 +11,7 @@ class Producer extends Model {
     {
       id: {
           type: DataTypes.INTEGER,
-          PrimaryKey: true,
+          primaryKey: true,
           allowNull: false,
           autoIncrement: true
       },
